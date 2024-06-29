@@ -44,7 +44,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   computer_name                   = "ubuvm"
-  admin_username                  = "admin"
+  admin_username                  = "vpnadmin"
   disable_password_authentication = true
 
   admin_ssh_key {

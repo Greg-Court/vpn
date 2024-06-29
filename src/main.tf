@@ -44,11 +44,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   computer_name                   = "ubuvm"
-  admin_username                  = "greg"
+  admin_username                  = "admin"
   disable_password_authentication = true
 
   admin_ssh_key {
-    username   = "greg"
+    username   = "admin"
     public_key = file("~/.ssh/id_rsa.pub")
   }
 

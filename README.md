@@ -1,5 +1,7 @@
-MacOS & Linux Only
+Scripts compatible with MacOS & Linux only.
 
-Initial Setup
+## Prerequisites
 
-1.
+- Wireguard tools
+- Azure CLI
+- Terraform

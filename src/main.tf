@@ -56,7 +56,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     server_address     = var.server_address,
     server_private_key = var.server_private_key,
     server_allowed_ips = var.subnet_address_prefix,
-    client_public_key     = var.client_public_key,
+    client_public_key  = var.client_public_key,
   }))
 }
 
@@ -65,7 +65,7 @@ resource "azurerm_public_ip" "vm" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
-  sku                 = "Standard"
+  sku                 = "Basic"
 }
 
 resource "azurerm_network_interface" "vm" {
@@ -130,7 +130,17 @@ resource "local_file" "wg_client_config" {
     client_private_key = var.client_private_key,
     client_address     = var.client_address,
     server_public_key  = var.server_public_key,
-    vm_public_ip       = azurerm_public_ip.vm.ip_address
+    vm_public_ip       = data.azurerm_public_ip.vm.ip_address
   })
   filename = "${path.module}/wg_${var.workload_name}_${var.location_short}.conf"
+}
+
+data "azurerm_public_ip" "vm" {
+  name                = azurerm_public_ip.vm.name
+  resource_group_name = azurerm_resource_group.rg.name
+  depends_on          = [azurerm_linux_virtual_machine.vm]
+}
+
+output "vm_public_ip" {
+  value = data.azurerm_public_ip.vm.ip_address
 }

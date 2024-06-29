@@ -1,2 +1,3 @@
 wgkeys/
 *.conf
+*.terraform.lock.hcl

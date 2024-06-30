@@ -1,4 +1,4 @@
-wgkeys/
+.terraform
 *.conf
 *.terraform.lock.hcl
 *.tfstate

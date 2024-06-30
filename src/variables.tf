@@ -13,7 +13,7 @@ variable "location_short" {
 variable "vm_size" {
   description = "The size of the VM"
   type        = string
-  default     = "Standard_B1s"
+  default     = "Standard_B1ls"
 }
 
 variable "location" {

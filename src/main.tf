@@ -34,6 +34,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     name                 = "osdisk-${var.workload_name}-${var.location_short}"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
+    disk_size_gb         = 30
   }
 
   source_image_reference {
